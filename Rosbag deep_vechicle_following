@@ -1,0 +1,51 @@
+跟著前車軌跡
+lanefollowing01~05
+*05中間前車有超出跑道
+
+照著線跑，不管前車怎麼扭，前車做lanefollowing
+lanefollowing06~10
+
+前車變換車道
+joystick11
+*10s 換一次車道
+joystick12
+*8s
+joystick13
+*6s
+joystick14
+*4s
+joystick15
+*2s
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================================
+前車：
+	lanefollow or joystick
+
+	$ roslaunch duckietown_demos lane_following.launch veh:=alex1114  	
+
+後車record：
+	$ roslaunch duckietown joystick_camera.launch veh:=alex1114
+
+	$ cd /deep_vehicle_following_data
+
+	$ rosbag record /alex1114/camera_node/image/compressed /alex1114/joy_mapper_node/car_cmd --spilt --size=2048 -o [name].bag
+
+後車play：
+	在電腦上 set_ros_master.sh 
+	再來roscore
+
+	$ cd /deep_vehicle_following_data
+
+	$ rosbag play -l [name].bag

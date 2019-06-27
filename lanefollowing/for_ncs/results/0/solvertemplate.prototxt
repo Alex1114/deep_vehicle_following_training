@@ -1,0 +1,18 @@
+# Requires the downloaded bvlc_referencenet caffemodel
+# this template is run from ./src, so we need to go one dir up
+net: "../caffe_data/train_val_finetuning.prototxt"
+test_iter: 7 # number(testimages) / batchsize =  1408/50 = 28.22
+test_interval: 1000
+# learning rate for finetuning is lower than lr for training from scratch
+base_lr: 0.005
+lr_policy: "step"
+gamma: 0.95
+# stepsize should also be lower
+stepsize: 100 #1 epoches
+display: 100
+max_iter: 100000 #100 epoches
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 100000
+solver_mode:GPU
+snapshot_prefix: "../results/0/snapshots/"
